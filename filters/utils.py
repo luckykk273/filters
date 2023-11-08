@@ -1,6 +1,9 @@
 import numpy as np
 
 
+GRAVITY = 9.80665
+
+
 def check_vector(v, length: int):
     v = np.asarray(v, dtype=np.float64)
     if v.ndim != 1 or v.shape[0] != length:
