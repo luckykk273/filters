@@ -7,26 +7,19 @@ Ref:
 3. Quaternions: https://faculty.sites.iastate.edu/jia/files/inline-files/quaternion.pdf
 '''
 
+from filter import BasicFilter
 from utils import check_vector, omega
 import numpy as np
 import pytransform3d.rotations as pr
 from ahrs.filters import AngularRate
 
 
-class Integral:
+class Integral(BasicFilter):
     def __init__(self, quat: np.ndarray = None, method: str = 'closed', order: int = 1) -> None:
-        self.quat: np.ndarray = quat
+        super().__init__(quat)
+        self.__update = None
         self.method: str = method
         self.order: int = order
-    
-    @property
-    def quat(self):
-        return self.__quat
-    
-    @quat.setter
-    def quat(self, q):
-        q = pr.q_id if q is None else q
-        self.__quat = pr.check_quaternion(q, unit=True)
 
     @property
     def method(self):
@@ -37,6 +30,11 @@ class Integral:
         if m not in ['closed', 'series']:
             raise ValueError(f'Method `{m}` is invalid. Only `closed` and `series` methods are supported.')
         self.__method = m
+        
+        if self.method == 'closed':
+            self.__update = self.__integrate_closed
+        elif self.method == 'series':
+            self.__update = self.__integrate_series
     
     @property
     def order(self):
@@ -54,26 +52,21 @@ class Integral:
         half_theta = norm * dt * 0.5
         F = np.cos(half_theta) * np.identity(4) + np.sin(half_theta) / norm * O
         self.quat = F @ self.quat
-        self.quat = pr.norm_vector(self.quat)
         
     def __integrate_series(self, gyr: np.ndarray, dt: float):
-        # TODO: can be optimized
         O = 0.5 * dt * omega(gyr)
+        O_pow = np.ones_like(O)
+        factorial = 1
         F = np.identity(4)
         for i in range(1, self.order + 1):
-            F += (O**i / np.prod(np.arange(i) + 1))
+            O_pow *= O
+            factorial *= i
+            F += (O_pow / factorial)
         self.quat = F @ self.quat
-        self.quat = pr.norm_vector(self.quat)
 
     def update(self, gyr, dt: float) -> np.ndarray:
         gyr = check_vector(gyr, 3)
-        
-        # TODO: use function variables
-        if self.method == 'closed':
-            self.__integrate_closed(gyr, dt)
-        elif self.method == 'series':
-            self.__integrate_series(gyr, dt)
-
+        self.__update(gyr, dt)
         return self.quat
 
 
