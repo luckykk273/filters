@@ -13,11 +13,12 @@ import numpy as np
 import pytransform3d.rotations as pr
 
 
-class ComplementaryFilter(BasicFilter):
-    gyr_thres = 0.2
-    acc_thres = 0.1
-    dgyr_thres = 0.01
+GYR_THRES = 0.2  # in rad/s
+ACC_THRES = 0.1  # in m/s^2
+DGYR_THRES = 0.01  # in rad/s
 
+
+class ComplementaryFilter(BasicFilter):
     def __init__(self, 
                  quat: np.ndarray = None, 
                  gain_acc: float = 0.01, 
@@ -136,13 +137,13 @@ class ComplementaryFilter(BasicFilter):
 
     def __check_state(self, acc, gyr):
         acc_norm = np.linalg.norm(acc)
-        if abs(acc_norm - GRAVITY) > ComplementaryFilter.acc_thres:
+        if abs(acc_norm - GRAVITY) > ACC_THRES:
             return False
         
-        if any(np.abs(gyr - self.__gyr_prev) > ComplementaryFilter.dgyr_thres):
+        if any(np.abs(gyr - self.__gyr_prev) > DGYR_THRES):
             return False
         
-        if any(np.abs(gyr - self.__gyr_bias) > ComplementaryFilter.gyr_thres):
+        if any(np.abs(gyr - self.__gyr_bias) > GYR_THRES):
             return False
         
         return True
@@ -209,6 +210,12 @@ class ComplementaryFilter(BasicFilter):
         return np.array([beta / np.sqrt(2.0 * gamma), 0.0, 0.0, ly / (np.sqrt(2.0) * beta)])
 
     def update(self, acc, gyr, dt: float, mag = None):
+        '''
+        acc: m/s^2
+        gyr: rad/s
+        dt: in second
+        mag: units irrelevant
+        '''
         acc = check_vector(acc, 3)
         gyr = check_vector(gyr, 3)
         if mag is not None:
