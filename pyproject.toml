@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "filters"
+version = "0.1.0"
+description = ""
+authors = ["Kyle Chen <luckykk273@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+pytransform3d = "^3.5.0"
+pytest = "^8.0.0"
+pylint = "^3.0.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
