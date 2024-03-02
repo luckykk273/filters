@@ -94,34 +94,26 @@ int main(void) {
 
 # References
 ## Integral
-[Quaternion kinematics for the error-state Kalman filter](http://www.iri.upc.edu/people/jsola/JoanSola/objectes/notes/kinematics.pdf)
-
-[Indirect Kalman Filter for 3D Attitude Estimation](http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf)
-
-[Quaternions](https://faculty.sites.iastate.edu/jia/files/inline-files/quaternion.pdf)
+- [Quaternion kinematics for the error-state Kalman filter](http://www.iri.upc.edu/people/jsola/JoanSola/objectes/notes/kinematics.pdf)
+- [Indirect Kalman Filter for 3D Attitude Estimation](http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf)
+- [Quaternions](https://faculty.sites.iastate.edu/jia/files/inline-files/quaternion.pdf)
 
 ## Tilt
-[Tilt computation using accelerometer data for inclinometer applications](https://www.st.com/resource/en/design_tip/dt0140-tilt-computation-using-accelerometer-data-for-inclinometer-applications-stmicroelectronics.pdf)
-
-[Tilt Sensing Using a Three-Axis Accelerometer](https://www.nxp.com/docs/en/application-note/AN3461.pdf)
+- [Tilt computation using accelerometer data for inclinometer applications](https://www.st.com/resource/en/design_tip/dt0140-tilt-computation-using-accelerometer-data-for-inclinometer-applications-stmicroelectronics.pdf)
+- [Tilt Sensing Using a Three-Axis Accelerometer](https://www.nxp.com/docs/en/application-note/AN3461.pdf)
 
 ## Complementary Filter
-[Keeping a Good Attitude: A Quaternion-Based Orientation Filter for IMUs and MARGs](https://www.mdpi.com/1424-8220/15/8/19302)
-
-[imu_tools](https://github.com/CCNYRoboticsLab/imu_tools/tree/noetic/imu_complementary_filter)
+- [Keeping a Good Attitude: A Quaternion-Based Orientation Filter for IMUs and MARGs](https://www.mdpi.com/1424-8220/15/8/19302)
+- [imu_tools](https://github.com/CCNYRoboticsLab/imu_tools/tree/noetic/imu_complementary_filter)
 
 ## Mahony
-[Complementary filter design on the special orthogonal group SO(3)](https://folk.ntnu.no/skoge/prost/proceedings/cdc-ecc05/pdffiles/papers/1889.pdf)
-
-[Attitude estimation on SO(3) based on direct inertial measurements](http://users.cecs.anu.edu.au/~Robert.Mahony/Mahony_Robert/2006_MahHamPfl-C68.pdf)
-
-[Nonlinear Complementary Filters on the Special Orthogonal Group](https://hal.science/hal-00488376/document)
-
-[A complementary filter for attitude estimation of a fixed-wing UAV](http://users.cecs.anu.edu.au/~Jonghyuk.Kim/pdf/2008_Euston_iros_v1.04.pdf)
-
-[xioTechnologies - Open source IMU and AHRS algorithms](https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/)
+- [Complementary filter design on the special orthogonal group SO(3)](https://folk.ntnu.no/skoge/prost/proceedings/cdc-ecc05/pdffiles/papers/1889.pdf)
+- [Attitude estimation on SO(3) based on direct inertial measurements](http://users.cecs.anu.edu.au/~Robert.Mahony/Mahony_Robert/2006_MahHamPfl-C68.pdf)
+- [Nonlinear Complementary Filters on the Special Orthogonal Group](https://hal.science/hal-00488376/document)
+- [A complementary filter for attitude estimation of a fixed-wing UAV](http://users.cecs.anu.edu.au/~Jonghyuk.Kim/pdf/2008_Euston_iros_v1.04.pdf)
+- [xioTechnologies - Open source IMU and AHRS algorithms](https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/)
 
 ## Madgwick
-[xioTechnologies - Open source IMU and AHRS algorithms](https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/)
+- [xioTechnologies - Open source IMU and AHRS algorithms](https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/)
 
 
